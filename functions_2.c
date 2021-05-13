@@ -30,14 +30,14 @@ void sub(stack_t **head, unsigned int count_line)
 
 	if (*head == NULL || head == NULL)
 	{
-		dprintf(STDERR_FILENO, "L%d: can't sub, stack too short",
+		dprintf(STDERR_FILENO, "L%d: can't sub, stack too short\n",
 		count_line);
 		exit(EXIT_FAILURE);
 	}
 	tmpfree = *head, tmp2 = NULL, tmp = NULL;
 	if (tmpfree->next == NULL)
 	{
-		dprintf(STDERR_FILENO, "L%d: can't sub, stack too short",
+		dprintf(STDERR_FILENO, "L%d: can't sub, stack too short\n",
 		count_line);
 		exit(EXIT_FAILURE);
 	}
