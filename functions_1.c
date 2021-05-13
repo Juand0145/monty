@@ -8,10 +8,13 @@
  */
 void push(stack_t **head, unsigned int line)
 {
-	add_dnodeint(head, atoi(data.commands[1]));
+	if (!atoi(data.commands[1]))
+	{
+		dprintf(STDERR_FILENO, "L%d: usage: push integer\n", line);
+		exit(EXIT_FAILURE);
+	}
 
-	if (!(head))
-		printf("%d", line);
+	add_dnodeint(head, atoi(data.commands[1]));
 }
 
 /**
