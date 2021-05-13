@@ -39,7 +39,7 @@ void pint(stack_t **head, unsigned int line)
 {
 	if (head == NULL)
 	{
-		dprintf(STDERR_FILENO, "L%d: can't pint, stack empty", line);
+		dprintf(STDERR_FILENO, "L%d: can't pint, stack empty\n", line);
 	}
 	printf("%d\n", (*head)->n);
 }
