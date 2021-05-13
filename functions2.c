@@ -77,7 +77,7 @@ void sub(stack_t **head, int count_line)
 		count_line);
 		exit(EXIT_FAILURE);
 	}
-	tmp = tmpfree->next, tmp->n = tmpfree->n - tmp->n, *head = tmp;
+	tmp = tmpfree->next, tmp->n = tmp->n - tmpfree->n, *head = tmp;
 	if (tmp->next != NULL)
 	{
 		tmp2 = tmp->next, tmp->next = tmp2, tmp2->prev = tmp;
