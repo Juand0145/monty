@@ -25,11 +25,8 @@ void push(stack_t **head, unsigned int line)
  */
 void pall(stack_t **head, unsigned int line)
 {
-	print_dlistint(*head);
-
-	if (!(head))
-		printf("%d", line);
-
+	if ((head) || line)
+		print_dlistint(*head);
 }
 
 /**
