@@ -4,7 +4,6 @@ void read_files(char *file_name)
 {
   stack_t *head = NULL;
   FILE *pfile;
-  int i;
   char *line;
   size_t len = 0;
   char **command;
@@ -23,26 +22,28 @@ void read_files(char *file_name)
   
   while (getline(&line, &len, pfile) != -1)
     {
+	count_line++;
       command = tokenize(line);
-      for (i = 0; command[i]; i++)
-	{
-	  if(strcmp(command[i], "push") == 0)
-	    push(&head, atoi(command[i + 1]));    
-
-	  if (strcmp(command[i], "pall") == 0)
+	  if(strcmp(command[0], "push") == 0)
+	     push(&head, atoi(command[1]));     
+	  else if(strcmp(command[0], "pall") == 0)
 	    pall(head);
-
-	  if (strcmp(command[i], "pint") == 0)
+	  else if (strcmp(command[0], "pint") == 0)
 	    pint(head);
-
-	  if (strcmp(command[i], "pop") == 0)
+	  else if (strcmp(command[0], "pop") == 0)
 	    pop(&head);
-
-	  if (strcmp(command[i], "swap") == 0)
+	  else if (strcmp(command[0], "swap") == 0)
 	    swap(&head);
-	}
+	  else
+	  {
+		  dprintf(STDERR_FILENO, "L%d: unknown instruction %s\n", count_line, command[0]);
+		  free(command);
+		  fclose(pfile);
+		  free_list(head);
+		  free(line);
+		  exit(EXIT_FAILURE);
+	  }
       free(command);
-      count_line++;
     }
   fclose(pfile);
   free(line);

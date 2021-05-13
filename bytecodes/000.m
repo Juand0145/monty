@@ -3,8 +3,9 @@ push 1
 push 2
   push 3
                      pall
-0
+a
 		     push 4
 		         push 5    
 			       push    6   
+			  pall
 
