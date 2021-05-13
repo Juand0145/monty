@@ -25,7 +25,7 @@ void push(stack_t **head, unsigned int line)
  */
 void pall(stack_t **head, unsigned int line)
 {
-	if ((head) || line)
+	if (!head || line)
 		print_dlistint(*head);
 }
 
@@ -37,10 +37,11 @@ void pall(stack_t **head, unsigned int line)
  */
 void pint(stack_t **head, unsigned int line)
 {
+	if (head == NULL)
+	{
+		dprintf(STDERR_FILENO, "L%d: can't pint, stack empty", line);
+	}
 	printf("%d\n", (*head)->n);
-
-	if (!(head))
-		printf("%d", line);
 }
 
 /**
