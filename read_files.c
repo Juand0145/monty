@@ -34,6 +34,12 @@ void read_files(char *file_name)
 			pop(&head);
 		else if (_strcmp(command[0], "swap") == 0)
 			swap(&head);
+		else if (_strcmp(command[0], "add") == 0)
+			add(&head, count_line);
+		else if (_strcmp(command[0], "nop") == 0)
+			nop();
+		else if (_strcmp(command[0], "sub") == 0)
+			sub(&head, count_line);
 		else
 		{
 			if (command[0] != NULL)
