@@ -9,34 +9,31 @@
  */
 stack_t *push(stack_t **head, const int n)
 {
-  stack_t *new_node;
+	stack_t *new_node;
 
-  if (head == NULL)
-    return (NULL);
+	if (head == NULL)
+		return (NULL);
+	new_node = malloc(sizeof(stack_t));
 
-  new_node = malloc(sizeof(stack_t));
+	if (new_node == NULL)
+	{
+		free(new_node);
+		return (NULL);
+	}
+	new_node->n = n;
 
-  if (new_node == NULL)
-    {
-      free(new_node);
-      return (NULL);
-    }
+	if (*head == NULL)
+	{
+		new_node->next = *head;
+		new_node->prev = NULL;
+		*head = new_node;
+		return (new_node);
+	}
 
-  new_node->n = n;
-
-  if (*head == NULL)
-    {
-      new_node->next = *head;
-      new_node->prev = NULL;
-      *head = new_node;
-      return (new_node);
-    }
-
-  (*head)->prev = new_node;
-  new_node->next = *head;
-  *head = new_node;
-
-  return (new_node);
+	(*head)->prev = new_node;
+	new_node->next = *head;
+	*head = new_node;
+	return (new_node);
 }
 
 /**
@@ -47,14 +44,14 @@ stack_t *push(stack_t **head, const int n)
  */
 void pall(const stack_t *h)
 {
-  int i = 0;
+	int i = 0;
 
-  while (h != NULL)
-    {
-      i++;
-      printf("%d\n", h->n);
-      h = h->next;
-    }
+	while (h != NULL)
+	{
+		i++;
+		printf("%d\n", h->n);
+		h = h->next;
+	}
 
 }
 
@@ -64,9 +61,10 @@ void pall(const stack_t *h)
  * @h: A pointer to the beginig of the list
  * Return: The number of elements in the list
  */
+
 void pint(const stack_t *h)
 {
-  printf("%d\n", h->n);
+	printf("%d\n", h->n);
 }
 
 /**
@@ -77,22 +75,21 @@ void pint(const stack_t *h)
  */
 void pop(stack_t **head)
 {
-  stack_t *temp = NULL;
-  stack_t *current = *head;
+	stack_t *temp = NULL;
+	stack_t *current = *head;
 
-  if ((*head)->next == NULL && (*head)->prev == NULL)
-    {
-      free(*head);
-      *head = NULL;
-    }
-
-  else
-    {
-      temp = (*head)->next;
-      *head = temp;
-      temp->prev = NULL;
-      free(current);
-    }
+	if ((*head)->next == NULL && (*head)->prev == NULL)
+	{
+		free(*head);
+		*head = NULL;
+	}
+	else
+	{
+		temp = (*head)->next;
+		*head = temp;
+		temp->prev = NULL;
+		free(current);
+	}
 }
 
 /**
@@ -103,18 +100,18 @@ void pop(stack_t **head)
  */
 void swap(stack_t **head)
 {
-  stack_t *node_a = NULL;
-  stack_t *node_b = NULL;
-  stack_t *current = *head;
+	stack_t *node_a = NULL;
+	stack_t *node_b = NULL;
+	stack_t *current = *head;
 
-  node_a = current->next;
-  node_b = node_a->next;
+	node_a = current->next;
+	node_b = node_a->next;
 
-  node_a->next = current;
-  current->next = node_b;
-  node_b->prev = current;
-  current->prev = node_a;
-  node_a->prev = NULL;
+	node_a->next = current;
+	current->next = node_b;
+	node_b->prev = current;
+	current->prev = node_a;
+	node_a->prev = NULL;
 
-  *head = node_a;
+	*head = node_a;
 }
