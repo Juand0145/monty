@@ -2,7 +2,7 @@
 
 char *read_files(char *file_name)
 {
-  int file_descriptor, fd_store, letters;
+  int file_descriptor, letters;
 	char buffer[BUFSIZ];
   char *arguments_storage;
 
@@ -14,7 +14,7 @@ char *read_files(char *file_name)
     write(2, file_name, _strlen(file_name));
 	} 
 
-  fd_store = read(file_descriptor, buffer, BUFSIZ);
+  read(file_descriptor, buffer, BUFSIZ);
   
   letters = _strlen(buffer);
 
