@@ -24,24 +24,27 @@ void read_files(char *file_name)
     {
 	count_line++;
       command = tokenize(line);
-	  if(strcmp(command[0], "push") == 0)
+	  if(_strcmp(command[0], "push") == 0)
 	     push(&head, atoi(command[1]));     
-	  else if(strcmp(command[0], "pall") == 0)
+	  else if(_strcmp(command[0], "pall") == 0)
 	    pall(head);
-	  else if (strcmp(command[0], "pint") == 0)
+	  else if (_strcmp(command[0], "pint") == 0)
 	    pint(head);
-	  else if (strcmp(command[0], "pop") == 0)
+	  else if (_strcmp(command[0], "pop") == 0)
 	    pop(&head);
-	  else if (strcmp(command[0], "swap") == 0)
+	  else if (_strcmp(command[0], "swap") == 0)
 	    swap(&head);
 	  else
 	  {
-		  dprintf(STDERR_FILENO, "L%d: unknown instruction %s\n", count_line, command[0]);
-		  free(command);
-		  fclose(pfile);
-		  free_list(head);
-		  free(line);
-		  exit(EXIT_FAILURE);
+		  if (command[0] != NULL)
+			  {
+		  		dprintf(STDERR_FILENO, "L%d: unknown instruction %s\n", count_line, command[0]);
+		  		free(command);
+		  		fclose(pfile);
+		  		free_list(head);
+		  		free(line);
+		  		exit(EXIT_FAILURE);
+			  }
 	  }
       free(command);
     }
@@ -70,4 +73,27 @@ int _strlen(char *s)
   while(*(s+i)!= '\0')
     i++;
   return (i);
+}
+
+
+int _strcmp(char *s1, char *s2)
+{
+  int l1 = 0;
+  int l2 = 0;
+  int i = 0;
+
+  l1 = _strlen(s1);
+  l2 = _strlen(s2);
+
+  if (l1 == 0 || l2 == 0)
+    return (-1);
+
+  while (*(s1 + i) == *(s2 + i))
+    i++;
+  i--;
+
+  if (l1 == i && l2 == i)
+    return (0);
+
+  return (-1);
 }

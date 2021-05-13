@@ -54,5 +54,6 @@ void pint(const stack_t *h);
 void pop(stack_t **head);
 void swap(stack_t **head);
 void free_list(stack_t *head);
+int _strcmp(char *s, char *s2);
 
 #endif
