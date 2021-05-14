@@ -8,7 +8,7 @@
  */
 void push(stack_t **head, unsigned int line)
 {
-	if (!atoi(data.commands[1]))
+	if (_atoi_verify(data.commands[1]) == -1 || data.commands[1] == NULL)
 	{
 		dprintf(STDERR_FILENO, "L%d: usage: push integer\n", line);
 		exit(EXIT_FAILURE);

@@ -91,3 +91,24 @@ int _strcmp(char *s1, char *s2)
 		return (0);
 	return (-1);
 }
+
+/**
+* _atoi_verify - function that verify if all arguments of string are numbers
+* @command: string to verify
+*
+* Return: -1 in case failure or 0 in case success
+*/
+
+int _atoi_verify(char *command)
+{
+	int i = 0;
+
+	while (*(command + i) != '\0')
+	{
+		if ((command[i] - 48 >= 0 && command[i] - 48 <= 9) || command[i] == '-')
+			i++;
+		else
+			return (-1);
+	}
+	return (0);
+}

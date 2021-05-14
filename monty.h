@@ -12,7 +12,17 @@
 
 
 /*structures*/
+
+
+
 extern unsigned int count_line;
+/**
+* struct data_s - doubly linked list representation of a stack (or queue)
+* @commands: double pointer
+* @count_line: unsigned int
+* Description: doubly linked list node structure
+* for stack, queues, LIFO, FIFO Holberton project
+*/
 
 typedef struct data_s
 {
@@ -77,4 +87,5 @@ int _strlen(char *s);
 char **tokenize(char *arguments);
 char **lines(char *line);
 char *_strdup(char *line);
+int _atoi_verify(char *command);
 #endif
