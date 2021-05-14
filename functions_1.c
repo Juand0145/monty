@@ -55,10 +55,12 @@ void pint(stack_t **head, unsigned int line)
  */
 void pop(stack_t **head, unsigned int line)
 {
+	if (*head == NULL || head == NULL)
+	{
+		dprintf(STDERR_FILENO, "L%d: can't pop an empty stack\n", line);
+		exit(EXIT_FAILURE);
+	}
 	_pop(head);
-
-	if (!(head))
-		printf("%d", line);
 }
 
 /**
