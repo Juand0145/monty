@@ -111,7 +111,6 @@ void _swap(stack_t **head)
 	}
 
 	node_a->next = current;
-	node_b->prev = current;
 	current->prev = node_a;
 	node_a->prev = NULL;
 
