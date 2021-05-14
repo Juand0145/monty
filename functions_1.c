@@ -71,8 +71,13 @@ void pop(stack_t **head, unsigned int line)
  */
 void swap(stack_t **head, unsigned int line)
 {
-	_swap(head);
+	stack_t *tmp = *head;
 
-	if (!(head))
-		printf("%d", line);
+	if (tmp->next == NULL)
+	{
+		dprintf(STDERR_FILENO, "L%d: can't swap, stack too short\n", line);
+		exit(EXIT_FAILURE);
+	}
+
+	_swap(head);
 }

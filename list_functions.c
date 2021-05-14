@@ -19,7 +19,7 @@ size_t print_dlistint(const stack_t *h)
 		h = h->next;
 	}
 
-	return (i);
+	return (0);
 }
 
 /**
@@ -99,10 +99,18 @@ void _swap(stack_t **head)
 	stack_t *current = *head;
 
 	node_a = current->next;
-	node_b = node_a->next;
+	if (node_a->next != NULL)
+	{
+		node_b = node_a->next;
+		current->next = node_b;
+		node_b->prev = current;
+	}
+	else
+	{
+		current->next = NULL;
+	}
 
 	node_a->next = current;
-	current->next = node_b;
 	node_b->prev = current;
 	current->prev = node_a;
 	node_a->prev = NULL;
