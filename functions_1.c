@@ -25,7 +25,9 @@ void push(stack_t **head, unsigned int line)
  */
 void pall(stack_t **head, unsigned int line)
 {
-	if (!head || line)
+	if (*head == NULL)
+		_nop();
+	else if (!head || line)
 		print_dlistint(*head);
 }
 
