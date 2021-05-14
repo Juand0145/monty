@@ -31,17 +31,19 @@ void read_files(char *file_name)
 		data.commands = tokenize(line);
 
 		if (data.commands[0])
+		{
 			exec_function = get_function(data.commands);
 
-		if (exec_function == NULL && data.commands[0] != NULL)
-		{
-			dprintf(STDERR_FILENO, "L%d: unknown instruction %s\n",
-			data.count_line, data.commands[0]);
-			free(data.commands), fclose(pfile), free_list(head), free(line);
-			exit(EXIT_FAILURE);
-		}
+			if (exec_function == NULL && data.commands[0] != NULL)
+			{
+				dprintf(STDERR_FILENO, "L%d: unknown instruction %s\n",
+				data.count_line, data.commands[0]);
+				free(data.commands), fclose(pfile), free_list(head), free(line);
+				exit(EXIT_FAILURE);
+			}
 
-		exec_function(&head, data.count_line);
+			exec_function(&head, data.count_line);
+		}
 		free(data.commands);
 	}
 	fclose(pfile), free(line), free_list(head);
